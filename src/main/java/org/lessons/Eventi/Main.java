@@ -77,5 +77,6 @@ public class Main {
 
         System.out.println("posti prenotati" + evento.getNumeroPostiPrenotati());
         System.out.println("posti ancora disponibili" + (evento.getNumeroPostiTotale() - evento.getNumeroPostiPrenotati()));
+
     }
 }
