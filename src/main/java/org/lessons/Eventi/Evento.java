@@ -32,7 +32,7 @@ public class Evento {
         return titolo;
     }
 
-    public void setTitolo(String titolo) {
+    public void setTitolo() {
         this.titolo = titolo;
     }
 
@@ -50,7 +50,7 @@ public class Evento {
         this.data = data;
     }
 
-    public int getNumeroPostiTotale(int numeroPostiTotale) {
+    public int getNumeroPostiTotale() {
         if(numeroPostiTotale < 0){
             throw new RuntimeException("inserire un numero valido");
         }
