@@ -50,15 +50,17 @@ public class Evento {
         this.data = data;
     }
 
-    public void getNumeroPostiTotale(int numeroPostiTotale) {
+    public int getNumeroPostiTotale(int numeroPostiTotale) {
         if(numeroPostiTotale < 0){
             throw new RuntimeException("inserire un numero valido");
         }
         this.numeroPostiTotale = numeroPostiTotale;
+        return numeroPostiTotale;
     }
 
-    public void getNumeroPostiPrenotati() {
+    public int getNumeroPostiPrenotati() {
         this.numeroPostiPrenotati = numeroPostiPrenotati;
+        return numeroPostiPrenotati;
     }
 
     // METODI
