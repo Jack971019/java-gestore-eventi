@@ -50,18 +50,45 @@ public class Evento {
         this.data = data;
     }
 
-    public void setNumeroPostiTotale(int numeroPostiTotale) {
+    public void getNumeroPostiTotale(int numeroPostiTotale) {
         if(numeroPostiTotale < 0){
             throw new RuntimeException();
         }
         this.numeroPostiTotale = numeroPostiTotale;
     }
 
-    public void setNumeroPostiPrenotati(int numeroPostiPrenotati) {
+    public void getNumeroPostiPrenotati() {
         this.numeroPostiPrenotati = numeroPostiPrenotati;
     }
 
     // METODI
 
 
+    @Override
+    public String toString() {
+        return "Evento{" +
+                "titolo='" + titolo + '\'' +
+                ", data=" + data +
+                '}';
+    }
+
+    // Aggiungere prenotazione posti
+
+    public void aggiungiPrenotazioni(int postiDaPrenotare){
+        if(data.isBefore(LocalDate.now()) || numeroPostiPrenotati >= numeroPostiTotale){
+            throw new RuntimeException();
+        } else {
+           numeroPostiPrenotati += postiDaPrenotare;
+        }
+    }
+
+    // Disdire prenotazione posti
+
+    public void disdiciPrenotazioni(int postiDaDisdire){
+        if(data.isBefore(LocalDate.now()) || numeroPostiPrenotati <= 0){
+            throw new RuntimeException();
+        } else {
+            numeroPostiPrenotati -= postiDaDisdire;
+        }
+    }
 }
