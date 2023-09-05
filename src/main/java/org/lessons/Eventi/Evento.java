@@ -15,11 +15,11 @@ public class Evento {
     public Evento(String titolo, LocalDate data, int numeroPostiTotale, int numeroPostiPrenotati) {
         this.titolo = titolo;
         if (data.isBefore(LocalDate.now())){
-            throw new RuntimeException();
+            throw new RuntimeException("inserire una data valida");
         }
         this.data = data;
         if(numeroPostiTotale < 0){
-            throw new RuntimeException();
+            throw new RuntimeException("inserire un numero valido");
         }
         this.numeroPostiTotale = numeroPostiTotale;
         this.numeroPostiPrenotati = 0;
@@ -38,21 +38,21 @@ public class Evento {
 
     public LocalDate getData() {
         if (data.isBefore(LocalDate.now())){
-            throw new RuntimeException();
+            throw new RuntimeException("inserire una data valida");
         }
         return data;
     }
 
     public void setData(LocalDate data) {
         if (data.isBefore(LocalDate.now())){
-            throw new RuntimeException();
+            throw new RuntimeException("inserire una data valida");
         }
         this.data = data;
     }
 
     public void getNumeroPostiTotale(int numeroPostiTotale) {
         if(numeroPostiTotale < 0){
-            throw new RuntimeException();
+            throw new RuntimeException("inserire un numero valido");
         }
         this.numeroPostiTotale = numeroPostiTotale;
     }
@@ -74,21 +74,27 @@ public class Evento {
 
     // Aggiungere prenotazione posti
 
-    public void aggiungiPrenotazioni(int postiDaPrenotare){
+    public int aggiungiPrenotazioni(int postiDaPrenotare){
         if(data.isBefore(LocalDate.now()) || numeroPostiPrenotati >= numeroPostiTotale){
-            throw new RuntimeException();
+            throw new RuntimeException("inserire una data valida o un numero di posti valido");
         } else {
            numeroPostiPrenotati += postiDaPrenotare;
+           numeroPostiTotale -= postiDaPrenotare;
         }
+
+        return postiDaPrenotare;
     }
 
     // Disdire prenotazione posti
 
-    public void disdiciPrenotazioni(int postiDaDisdire){
+    public int disdiciPrenotazioni(int postiDaDisdire){
         if(data.isBefore(LocalDate.now()) || numeroPostiPrenotati <= 0){
-            throw new RuntimeException();
+            throw new RuntimeException("inserire una data valida o un numero di posti valido");
         } else {
             numeroPostiPrenotati -= postiDaDisdire;
+            numeroPostiTotale += postiDaDisdire;
         }
+
+        return postiDaDisdire;
     }
 }

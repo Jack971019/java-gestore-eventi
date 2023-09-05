@@ -20,5 +20,11 @@ public class Main {
         Evento evento = new Evento(titolo, data, numeroPostiTotale, numeroPostiPrenotati);
 
         System.out.println(evento);
+        System.out.println(numeroPostiTotale);
+        System.out.println(numeroPostiPrenotati);
+
+        System.out.println("vuoi fare una nuova prenotazione?");
+        String userChoice = scan.nextLine();
+
     }
 }
