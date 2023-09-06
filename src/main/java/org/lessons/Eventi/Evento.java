@@ -54,12 +54,10 @@ public class Evento {
         if(numeroPostiTotale < 0){
             throw new RuntimeException("inserire un numero valido");
         }
-        this.numeroPostiTotale = numeroPostiTotale;
         return numeroPostiTotale;
     }
 
     public int getNumeroPostiPrenotati() {
-        this.numeroPostiPrenotati = numeroPostiPrenotati;
         return numeroPostiPrenotati;
     }
 
@@ -68,10 +66,10 @@ public class Evento {
 
     @Override
     public String toString() {
-        return "Evento{" +
+        return "Evento" +
                 "titolo='" + titolo + '\'' +
-                ", data=" + data +
-                '}';
+                ", data=" + data + "posti prenotati" + getNumeroPostiPrenotati()
+                + "posti disponibili" + getNumeroPostiTotale();
     }
 
     // Aggiungere prenotazione posti
