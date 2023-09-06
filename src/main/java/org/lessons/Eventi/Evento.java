@@ -64,14 +64,6 @@ public class Evento {
     // METODI
 
 
-    @Override
-    public String toString() {
-        return "Evento" +
-                "titolo='" + titolo + '\'' +
-                ", data=" + data + "posti prenotati" + getNumeroPostiPrenotati()
-                + "posti disponibili" + getNumeroPostiTotale();
-    }
-
     // Aggiungere prenotazione posti
 
     public int aggiungiPrenotazioni(int postiDaPrenotare){
@@ -79,7 +71,7 @@ public class Evento {
             throw new RuntimeException("inserire una data valida o un numero di posti valido");
         } else {
            numeroPostiPrenotati += postiDaPrenotare;
-           numeroPostiTotale -= postiDaPrenotare;
+           numeroPostiTotale = numeroPostiTotale - numeroPostiPrenotati;
         }
 
         return postiDaPrenotare;
@@ -92,9 +84,17 @@ public class Evento {
             throw new RuntimeException("inserire una data valida o un numero di posti valido");
         } else {
             numeroPostiPrenotati -= postiDaDisdire;
-            numeroPostiTotale += postiDaDisdire;
+            numeroPostiTotale -= numeroPostiPrenotati;
         }
 
         return postiDaDisdire;
+    }
+
+    @Override
+    public String toString() {
+        return "Evento" +
+                "titolo='" + titolo + '\'' +
+                ", data=" + data + "posti prenotati" + getNumeroPostiPrenotati()
+                + "posti disponibili" + getNumeroPostiTotale();
     }
 }
